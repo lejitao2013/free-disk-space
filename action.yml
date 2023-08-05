@@ -1,5 +1,23 @@
-name: "Free Disk Space (Ubuntu)"
-description: "A configurable GitHub Action to free up disk space on an Ubuntu GitHub Actions runner."
+name: Free Disk Space (Ubuntu)
+on: push
+
+jobs:
+  free-disk-space:
+    runs-on: ubuntu-latest
+    steps:
+      # If there is a problem with this GitHub Actions, this step will fail
+      - name: Free Disk Space
+        uses: lejitao2013/free-disk-space@main
+        with:
+          tool-cache: true
+
+          # all of these default to true, but feel free to set to
+          # false if necessary for your workflow
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          swap-storage: true
 
 # See: https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#branding
 branding:
